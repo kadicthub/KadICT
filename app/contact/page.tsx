@@ -40,7 +40,7 @@ export default function ContactPage() {
                 <i className="bi bi-phone flex-shrink-0"></i>
                 <div>
                   <h4>Call:</h4>
-                  <p>+234 8035169089</p>
+                  <p>07048641071</p>
                 </div>
               </div>
 

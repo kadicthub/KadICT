@@ -53,8 +53,7 @@ export default function Footer() {
                   No. 47 Kanta Road, <br />
                   by Independence way,<br />
                   Kaduna State. <br /><br />
-                  <strong>Phone:</strong> +234 8034575765<br />
-                  <strong>Phone:</strong> +234 9135203350<br />
+                  <strong>Phone:</strong> 07048641071<br />
                   <strong>Email:</strong><a href="mailto:info@kadhub.ng"> info@kadhub.ng</a><br />
                 </p>
               </div>
