@@ -11,7 +11,9 @@ firebase-debug.*.log*
 .firebase/
 .claude/
 .vscode/
-.next
+.next/
+next-env.d.ts
+*.tsbuildinfo
 
 # Firebase config
 
@@ -67,6 +69,7 @@ node_modules/
 
 # dotenv environment variables file
 .env
+.env*.local
 
 # dataconnect generated files
 .dataconnect
