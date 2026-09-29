@@ -23,7 +23,7 @@ pnpm dev           # http://localhost:3000
 | ------------------- | ------------------- |
 | `pnpm dev`          | Development server  |
 | `pnpm build`        | Production build    |
-| `pnpm typecheck`    | `tsc --noEmit`      |
+| `pnpm typecheck`    | Route types + `tsc` |
 | `pnpm lint`         | ESLint              |
 | `pnpm format:check` | Prettier            |
 | `pnpm test`         | Unit tests (Vitest) |
