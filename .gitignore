@@ -73,3 +73,8 @@ node_modules/
 
 # dataconnect generated files
 .dataconnect
+
+# Local env, Vercel link, nested project
+.env*.local
+.vercel
+kad-learn/
