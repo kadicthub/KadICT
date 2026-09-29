@@ -6,6 +6,7 @@ import { Providers } from '@/components/site/Providers';
 import { brand, SITE_URLS } from '@/lib/brand';
 import { hubIntro } from '@/content/hub';
 import '@/styles/globals.css';
+import '@/styles/hub.css';
 
 // The KAD ICT Hub typefaces, shared with learn.kadhub.ng.
 const body = Open_Sans({

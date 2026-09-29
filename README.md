@@ -66,6 +66,7 @@ five minutes.
 ## Content
 
 Page copy lives in `src/content/` (`hub.ts` for the hub's story, stats,
-testimonials, startups and events; `services.ts` for the six services). Images
+testimonials, startups and events; `services.ts` for the six services). The home page's welcome popup (once per browser session) shows the course
+flyers from `src/content/flyers.ts` / `public/images/flyers`. Images
 are in `public/images`, resized for the web. The STEM Festival 2024 brochure is
 still served from `public/assets/img/` (24 MB; a compressed PDF would help).

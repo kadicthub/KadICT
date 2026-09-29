@@ -54,6 +54,8 @@
   --color-brand-magenta: var(--brand-magenta);
   --color-brand-cyan: var(--brand-cyan);
   --color-brand-lime: var(--brand-lime);
+  --color-brand-blue: var(--brand-blue);
+  --color-glass-border: var(--glass-border);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -75,9 +77,9 @@
 :root {
   --background: hsl(228 33% 98%);
   --foreground: hsl(232 38% 14%);
-  --card: hsl(0 0% 100%);
+  --card: hsl(0 0% 100% / 0.7);
   --card-foreground: hsl(232 38% 14%);
-  --popover: hsl(0 0% 100%);
+  --popover: hsl(0 0% 100% / 0.9);
   --popover-foreground: hsl(232 38% 14%);
   --primary: hsl(231 55% 37%);
   --primary-foreground: hsl(0 0% 100%);
@@ -95,7 +97,7 @@
   --warning-foreground: hsl(0 0% 100%);
   --info: hsl(207 70% 40%);
   --info-foreground: hsl(0 0% 100%);
-  --surface-panel: hsl(229 30% 96%);
+  --surface-panel: hsl(229 40% 96% / 0.55);
   --border: hsl(229 22% 87%);
   --input: hsl(229 22% 87%);
   --ring: hsl(231 55% 37%);
@@ -105,13 +107,20 @@
   --brand-magenta: hsl(327 90% 47%);
   --brand-cyan: hsl(197 90% 48%);
   --brand-lime: hsl(66 80% 45%);
+  --brand-blue: hsl(231 75% 50%);
   --chart-1: hsl(231 55% 37%);
   --chart-2: hsl(197 90% 40%);
   --chart-3: hsl(34 100% 35%);
   --chart-4: hsl(143 55% 27%);
   --chart-5: hsl(327 80% 45%);
   --radius: 0.5rem;
-  --sidebar: hsl(229 30% 96%);
+  --glass-border: hsl(0 0% 100% / 0.65);
+  --glass-shadow: inset 0 1px 0 0 hsl(0 0% 100% / 0.7), 0 10px 30px -14px hsl(231 55% 25% / 0.22);
+  --glow-1: hsl(231 85% 62% / 0.26);
+  --glow-2: hsl(197 90% 55% / 0.2);
+  --glow-3: hsl(327 90% 58% / 0.14);
+  --grid-line: hsl(231 45% 40% / 0.09);
+  --sidebar: hsl(229 40% 96% / 0.6);
   --sidebar-foreground: hsl(232 38% 14%);
   --sidebar-primary: hsl(231 55% 37%);
   --sidebar-primary-foreground: hsl(0 0% 100%);
@@ -124,9 +133,9 @@
 .dark {
   --background: hsl(232 32% 8%);
   --foreground: hsl(229 30% 93%);
-  --card: hsl(232 28% 12%);
+  --card: hsl(232 32% 14% / 0.55);
   --card-foreground: hsl(229 30% 93%);
-  --popover: hsl(232 28% 12%);
+  --popover: hsl(232 30% 12% / 0.9);
   --popover-foreground: hsl(229 30% 93%);
   --primary: hsl(229 75% 74%);
   --primary-foreground: hsl(232 32% 8%);
@@ -144,7 +153,7 @@
   --warning-foreground: hsl(232 32% 8%);
   --info: hsl(207 60% 65%);
   --info-foreground: hsl(232 32% 8%);
-  --surface-panel: hsl(232 26% 14%);
+  --surface-panel: hsl(232 30% 13% / 0.5);
   --border: hsl(232 22% 22%);
   --input: hsl(232 22% 22%);
   --ring: hsl(229 75% 74%);
@@ -154,12 +163,19 @@
   --brand-magenta: hsl(327 85% 62%);
   --brand-cyan: hsl(197 85% 60%);
   --brand-lime: hsl(66 70% 55%);
+  --brand-blue: hsl(231 75% 50%);
   --chart-1: hsl(229 75% 74%);
   --chart-2: hsl(197 85% 60%);
   --chart-3: hsl(34 85% 65%);
   --chart-4: hsl(143 50% 62%);
   --chart-5: hsl(327 85% 62%);
-  --sidebar: hsl(232 26% 14%);
+  --sidebar: hsl(232 30% 12% / 0.6);
+  --glass-border: hsl(229 70% 90% / 0.1);
+  --glass-shadow: inset 0 1px 0 0 hsl(229 70% 90% / 0.07), 0 14px 40px -16px hsl(232 60% 2% / 0.75);
+  --glow-1: hsl(231 85% 58% / 0.3);
+  --glow-2: hsl(197 90% 50% / 0.16);
+  --glow-3: hsl(327 85% 55% / 0.14);
+  --grid-line: hsl(229 70% 85% / 0.05);
   --sidebar-foreground: hsl(229 30% 93%);
   --sidebar-primary: hsl(229 75% 74%);
   --sidebar-primary-foreground: hsl(232 32% 8%);
@@ -176,6 +192,24 @@
   body {
     @apply bg-background text-foreground;
   }
+  /*
+   * The platform backdrop: the logo's blue, cyan and magenta as soft glows
+   * over a faint circuit grid, fixed behind every page so the glass
+   * surfaces above it have something to frost.
+   */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(60rem 40rem at 8% -12%, var(--glow-1), transparent 62%),
+      radial-gradient(48rem 34rem at 102% 8%, var(--glow-2), transparent 60%),
+      radial-gradient(44rem 30rem at 55% 112%, var(--glow-3), transparent 60%),
+      linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / 44px 44px,
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 44px 44px;
+  }
   :focus-visible {
     @apply ring-2 ring-ring ring-offset-2 ring-offset-background outline-none;
   }
@@ -187,4 +221,159 @@
       transition-duration: 0.01ms !important;
     }
   }
+}
+
+/*
+ * Glassmorphism. Every card, popover and panel surface is translucent (see
+ * the tokens above) and frosts whatever is behind it. `:where` keeps this at
+ * zero specificity, so a component's own shadow or blur utilities still win.
+ */
+@layer components {
+  :where(.bg-card, .bg-popover, .bg-surface-panel, .bg-sidebar) {
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    backdrop-filter: blur(16px) saturate(160%);
+  }
+  :where(.bg-card) {
+    box-shadow: var(--glass-shadow);
+  }
+
+  /* The shared header frosts further once the page has scrolled. */
+  [data-site-header] {
+    transition:
+      background-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  [data-scrolled] [data-site-header] {
+    background-color: color-mix(in oklch, var(--background) 80%, transparent);
+    box-shadow: 0 10px 30px -18px hsl(231 60% 20% / 0.45);
+  }
+
+  /*
+   * Interactive surfaces (src/components/brand/Interactions.tsx sets --mx and
+   * --my): a glow that follows the pointer, and a small lift on hover.
+   */
+  [data-spotlight] {
+    position: relative;
+    isolation: isolate;
+  }
+  [data-spotlight]::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: radial-gradient(
+      420px circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in oklch, var(--primary) 16%, transparent),
+      transparent 45%
+    );
+  }
+  @media (hover: hover) {
+    [data-spotlight] {
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+    [data-spotlight]:hover {
+      border-color: color-mix(in oklch, var(--primary) 45%, var(--border));
+      box-shadow:
+        var(--glass-shadow),
+        0 16px 40px -18px color-mix(in oklch, var(--primary) 55%, transparent);
+    }
+    [data-spotlight]:hover::before {
+      opacity: 1;
+    }
+  }
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    [data-spotlight]:hover {
+      transform: translateY(-3px);
+    }
+  }
+
+  /* Scroll reveal: only content that starts below the fold is held back. */
+  [data-reveal] {
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  [data-reveal-pending] {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  /* Decorative layer for the navy brand bands (TechBackdrop.tsx). */
+  .tech-grid {
+    background:
+      linear-gradient(hsl(229 70% 90% / 0.07) 1px, transparent 1px) 0 0 / 40px 40px,
+      linear-gradient(90deg, hsl(229 70% 90% / 0.07) 1px, transparent 1px) 0 0 / 40px 40px;
+    mask-image: radial-gradient(ellipse at 70% 40%, black 10%, transparent 75%);
+  }
+  .tech-orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(60px);
+    opacity: 0.55;
+    animation: kad-drift 18s ease-in-out infinite alternate;
+  }
+  .tech-scan {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklch, var(--brand-cyan) 55%, transparent),
+      transparent
+    );
+    animation: kad-scan 7s linear infinite;
+  }
+  @keyframes kad-drift {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(6%, -8%, 0) scale(1.08);
+    }
+    100% {
+      transform: translate3d(-5%, 6%, 0) scale(0.95);
+    }
+  }
+  @keyframes kad-scan {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tech-orb,
+    .tech-scan {
+      animation: none;
+    }
+  }
+}
+
+/* Headline accent on the navy brand bands. */
+@utility text-gradient-brand {
+  background: linear-gradient(
+    100deg,
+    var(--brand-foreground) 10%,
+    var(--brand-cyan) 55%,
+    var(--brand-magenta) 95%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* An explicit glass panel, for surfaces that are not cards (hero chips, stats). */
+@utility glass {
+  background-color: var(--card);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(160%);
 }

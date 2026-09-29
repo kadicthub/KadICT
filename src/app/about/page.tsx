@@ -52,7 +52,12 @@ export default function AboutPage() {
             { icon: Target, title: 'Our mission', body: mission },
             { icon: Eye, title: 'Our vision', body: vision },
           ].map((b) => (
-            <article key={b.title} className="space-y-3 rounded-xl border bg-card p-8">
+            <article
+              key={b.title}
+              data-reveal
+              data-spotlight
+              className="space-y-3 rounded-xl border bg-card p-8"
+            >
               <b.icon className="size-7 text-primary" aria-hidden="true" />
               <h2 className="font-heading text-2xl font-semibold">{b.title}</h2>
               <p className="leading-relaxed text-muted-foreground">{b.body}</p>

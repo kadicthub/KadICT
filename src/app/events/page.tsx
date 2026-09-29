@@ -22,10 +22,13 @@ export default function EventsPage() {
       />
       <section aria-label="Events" className="py-16">
         <Container>
-          <ul className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <ul data-reveal-stagger className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {events.map((e) => (
               <li key={e.slug}>
-                <article className="group relative flex h-full flex-col overflow-hidden rounded-xl border bg-card focus-within:ring-3 focus-within:ring-ring/50">
+                <article
+                  data-spotlight
+                  className="group relative flex h-full flex-col overflow-hidden rounded-xl border bg-card focus-within:ring-3 focus-within:ring-ring/50"
+                >
                   <div className="relative aspect-[16/10]">
                     <Image
                       src={e.image}

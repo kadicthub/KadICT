@@ -10,7 +10,8 @@ export function CourseCard({ course, preload = false }: { course: LmsCourse; pre
   return (
     <article
       aria-labelledby={titleId}
-      className="group relative flex h-full flex-col overflow-hidden rounded-lg border bg-card transition-shadow focus-within:ring-3 focus-within:ring-ring/50 hover:shadow-md"
+      data-spotlight
+      className="group relative flex h-full flex-col overflow-hidden rounded-xl border bg-card focus-within:ring-3 focus-within:ring-ring/50"
     >
       <div className="relative aspect-[16/9] w-full overflow-hidden bg-muted">
         {course.coverUrl ? (

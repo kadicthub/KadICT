@@ -48,7 +48,10 @@ export function SiteHeader({ current, actions }: { current: Site; actions: React
     });
 
   return (
-    <header className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
+    <header
+      data-site-header
+      className="sticky top-0 z-40 border-b border-glass-border bg-background/60 backdrop-blur-xl backdrop-saturate-150"
+    >
       <BrandStripe />
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4">
         <Logo href={siteHref('hub', '/', current)} />

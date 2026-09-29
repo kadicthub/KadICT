@@ -2,13 +2,15 @@ import { Mail, MapPin, Phone } from 'lucide-react';
 import Link from 'next/link';
 import { brand, contact, footerNav, siteHref, socials, type Site } from '@/lib/brand';
 import { BrandStripe } from './BrandStripe';
+import { TechBackdrop } from './TechBackdrop';
 import { Logo } from './Logo';
 import { SocialIcon } from './SocialIcon';
 
 /** The footer both KAD sites share: who we are, where to go, how to reach us. */
 export function SiteFooter({ current }: { current: Site }) {
   return (
-    <footer className="bg-brand text-brand-foreground">
+    <footer className="relative isolate overflow-hidden bg-brand text-brand-foreground">
+      <TechBackdrop scan={false} className="opacity-60" />
       <BrandStripe />
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.3fr]">
         <div className="space-y-4">

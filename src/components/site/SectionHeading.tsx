@@ -14,7 +14,10 @@ export function SectionHeading({
   align?: 'left' | 'center';
 }) {
   return (
-    <div className={cn('space-y-3', align === 'center' && 'mx-auto max-w-2xl text-center')}>
+    <div
+      data-reveal
+      className={cn('space-y-3', align === 'center' && 'mx-auto max-w-2xl text-center')}
+    >
       {eyebrow && (
         <p className="font-heading text-sm font-semibold tracking-widest text-primary uppercase">
           {eyebrow}
