@@ -6,6 +6,7 @@ import { Container } from '@/components/site/Container';
 import { CourseCard } from '@/components/site/CourseCard';
 import { onBrandOutline, onBrandSolid } from '@/components/site/onBrand';
 import { SectionHeading } from '@/components/site/SectionHeading';
+import { WelcomePopup } from '@/components/site/WelcomePopup';
 import { buttonVariants } from '@/components/ui/button';
 import { brand } from '@/lib/brand';
 import { getLmsCatalog } from '@/lib/lms';
@@ -24,6 +25,7 @@ export default async function HomePage() {
   const catalog = await getLmsCatalog({ limit: 6 });
   return (
     <>
+      <WelcomePopup />
       <section className="relative isolate overflow-hidden bg-brand text-brand-foreground">
         <Image
           src="/images/hero-awards.jpg"
@@ -34,9 +36,14 @@ export default async function HomePage() {
           className="-z-10 object-cover opacity-30"
         />
         <Container className="flex min-h-[70vh] flex-col items-start justify-center gap-6 py-20">
-          <p className="font-heading text-sm font-semibold tracking-widest text-brand-muted-foreground uppercase">
-            {brand.name}
-          </p>
+          <Image
+            src="/brand/kad-logo.png"
+            alt={brand.logoAlt}
+            width={327}
+            height={160}
+            preload
+            className="kad-float kad-logo-glow h-24 w-auto md:h-32"
+          />
           <h1 className="max-w-3xl font-heading text-4xl font-bold tracking-tight [text-wrap:balance] md:text-6xl">
             Engage. Innovate. Evolve.
           </h1>
