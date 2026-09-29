@@ -2,7 +2,9 @@ import { ArrowRight, Code2, GraduationCap, Handshake, Quote } from 'lucide-react
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { TechBackdrop } from '@/components/brand/TechBackdrop';
 import { Container } from '@/components/site/Container';
+import { CountUp } from '@/components/site/CountUp';
 import { CourseCard } from '@/components/site/CourseCard';
 import { onBrandOutline, onBrandSolid } from '@/components/site/onBrand';
 import { SectionHeading } from '@/components/site/SectionHeading';
@@ -33,8 +35,9 @@ export default async function HomePage() {
           fill
           preload
           sizes="100vw"
-          className="-z-10 object-cover opacity-30"
+          className="-z-20 object-cover opacity-25"
         />
+        <TechBackdrop />
         <Container className="flex min-h-[70vh] flex-col items-start justify-center gap-6 py-20">
           <Image
             src="/brand/kad-logo.png"
@@ -44,7 +47,7 @@ export default async function HomePage() {
             preload
             className="kad-float kad-logo-glow h-24 w-auto md:h-32"
           />
-          <h1 className="max-w-3xl font-heading text-4xl font-bold tracking-tight [text-wrap:balance] md:text-6xl">
+          <h1 className="max-w-3xl text-gradient-brand font-heading text-4xl font-bold tracking-tight [text-wrap:balance] md:text-6xl">
             Engage. Innovate. Evolve.
           </h1>
           <p className="max-w-2xl text-lg text-brand-muted-foreground md:text-xl">{hubIntro}</p>
@@ -62,14 +65,19 @@ export default async function HomePage() {
         </Container>
       </section>
 
-      <section aria-label="The hub in numbers" className="border-b bg-card">
-        <Container className="grid gap-8 py-10 sm:grid-cols-3">
-          {stats.map((s) => (
-            <div key={s.label} className="space-y-1">
-              <p className="font-heading text-4xl font-bold text-primary">{s.value}</p>
-              <p className="text-sm text-muted-foreground">{s.label}</p>
-            </div>
-          ))}
+      <section aria-label="The hub in numbers" className="relative z-10 -mt-12">
+        <Container>
+          <ul data-reveal-stagger className="grid gap-4 sm:grid-cols-3">
+            {stats.map((s) => (
+              <li key={s.label} data-spotlight className="space-y-1 rounded-2xl glass p-6">
+                <CountUp
+                  value={s.value}
+                  className="block font-heading text-4xl font-bold text-primary"
+                />
+                <p className="text-sm text-muted-foreground">{s.label}</p>
+              </li>
+            ))}
+          </ul>
         </Container>
       </section>
 
@@ -80,11 +88,15 @@ export default async function HomePage() {
             eyebrow="What we do"
             title="Skills, software and advice for Kaduna and beyond"
           />
-          <ul className="grid gap-6 md:grid-cols-3">
+          <ul data-reveal-stagger className="grid gap-6 md:grid-cols-3">
             {pillars.map((p, i) => {
               const Icon = pillarIcons[i] ?? GraduationCap;
               return (
-                <li key={p.title} className="space-y-3 rounded-xl border bg-card p-6">
+                <li
+                  key={p.title}
+                  data-spotlight
+                  className="h-full space-y-3 rounded-xl border bg-card p-6"
+                >
                   <span className="flex size-11 items-center justify-center rounded-lg bg-accent text-accent-foreground">
                     <Icon className="size-5" aria-hidden="true" />
                   </span>
@@ -112,7 +124,7 @@ export default async function HomePage() {
             </Link>
           </div>
           {catalog.status === 'ok' && catalog.courses.length > 0 ? (
-            <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <ul data-reveal-stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {catalog.courses.slice(0, 6).map((c) => (
                 <li key={c.slug}>
                   <CourseCard course={c} />
@@ -141,12 +153,13 @@ export default async function HomePage() {
             eyebrow="Our services"
             title="What the public and private sector outsource to us"
           />
-          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <ul data-reveal-stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => (
               <li key={s.slug}>
                 <Link
                   href={`/services/${s.slug}`}
-                  className="group flex h-full flex-col gap-3 rounded-xl border bg-card p-6 transition-colors hover:border-primary/40 hover:bg-accent/40 focus-visible:ring-3 focus-visible:ring-ring/50"
+                  data-spotlight
+                  className="group flex h-full flex-col gap-3 rounded-xl border bg-card p-6 focus-visible:ring-3 focus-visible:ring-ring/50"
                 >
                   <s.icon className="size-7 text-primary" aria-hidden="true" />
                   <h3 className="font-heading text-lg font-semibold">{s.title}</h3>
@@ -165,7 +178,11 @@ export default async function HomePage() {
         </Container>
       </section>
 
-      <section aria-labelledby="incubation" className="bg-brand py-20 text-brand-foreground">
+      <section
+        aria-labelledby="incubation"
+        className="relative isolate overflow-hidden bg-brand py-20 text-brand-foreground"
+      >
+        <TechBackdrop />
         <Container className="grid items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
           <div className="space-y-5">
             <p className="font-heading text-sm font-semibold tracking-widest text-brand-muted-foreground uppercase">
@@ -205,11 +222,12 @@ export default async function HomePage() {
             eyebrow="Events"
             title="Challenges, festivals and hackathons"
           />
-          <ul className="grid gap-6 md:grid-cols-3">
+          <ul data-reveal-stagger className="grid gap-6 md:grid-cols-3">
             {events.map((e) => (
               <li key={e.slug}>
                 <Link
                   href={e.href}
+                  data-spotlight
                   className="group flex h-full flex-col overflow-hidden rounded-xl border bg-card focus-visible:ring-3 focus-visible:ring-ring/50"
                 >
                   <div className="relative aspect-[16/10]">
@@ -241,10 +259,13 @@ export default async function HomePage() {
             title="What our partners say"
             align="center"
           />
-          <ul className="grid gap-6 md:grid-cols-3">
+          <ul data-reveal-stagger className="grid gap-6 md:grid-cols-3">
             {testimonials.map((t) => (
               <li key={t.name}>
-                <figure className="flex h-full flex-col gap-5 rounded-xl border bg-card p-6">
+                <figure
+                  data-spotlight
+                  className="flex h-full flex-col gap-5 rounded-xl border bg-card p-6"
+                >
                   <Quote className="size-6 text-primary" aria-hidden="true" />
                   <blockquote className="flex-1 leading-relaxed">“{t.quote}”</blockquote>
                   <figcaption className="flex items-center gap-3">

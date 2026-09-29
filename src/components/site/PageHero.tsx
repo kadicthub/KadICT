@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { TechBackdrop } from '@/components/brand/TechBackdrop';
 import { Container } from './Container';
 
 /**
@@ -26,15 +27,16 @@ export function PageHero({
         fill
         preload
         sizes="100vw"
-        className="-z-10 object-cover opacity-25"
+        className="-z-20 object-cover opacity-20"
       />
+      <TechBackdrop />
       <Container className="flex flex-col items-start gap-4 py-16 md:py-24">
         {eyebrow && (
           <p className="font-heading text-sm font-semibold tracking-widest text-brand-muted-foreground uppercase">
             {eyebrow}
           </p>
         )}
-        <h1 className="max-w-3xl font-heading text-4xl font-bold tracking-tight [text-wrap:balance] md:text-5xl">
+        <h1 className="max-w-3xl text-gradient-brand font-heading text-4xl font-bold tracking-tight [text-wrap:balance] md:text-5xl">
           {title}
         </h1>
         {lead && <p className="max-w-2xl text-lg text-brand-muted-foreground">{lead}</p>}

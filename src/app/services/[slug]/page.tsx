@@ -27,7 +27,7 @@ function List({ title, items }: { title: string; items: string[] }) {
   return (
     <section className="space-y-4">
       <h2 className="font-heading text-2xl font-semibold">{title}</h2>
-      <ul className="grid gap-3 sm:grid-cols-2">
+      <ul data-reveal-stagger className="grid gap-3 sm:grid-cols-2">
         {items.map((item) => (
           <li key={item} className="flex gap-2.5">
             <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden="true" />

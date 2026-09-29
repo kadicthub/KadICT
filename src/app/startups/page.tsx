@@ -24,9 +24,13 @@ export default function StartupsPage() {
       />
       <section aria-label="Startups" className="py-16">
         <Container className="space-y-10">
-          <ul className="grid gap-6 md:grid-cols-3">
+          <ul data-reveal-stagger className="grid gap-6 md:grid-cols-3">
             {startups.map((s) => (
-              <li key={s.name} className="flex flex-col overflow-hidden rounded-xl border bg-card">
+              <li
+                key={s.name}
+                data-spotlight
+                className="flex flex-col overflow-hidden rounded-xl border bg-card"
+              >
                 <div className="relative flex aspect-[4/3] items-center justify-center bg-card p-6">
                   <Image
                     src={s.logo}

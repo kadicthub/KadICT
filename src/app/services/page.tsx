@@ -25,12 +25,13 @@ export default function ServicesPage() {
       />
       <section aria-label="Services" className="py-16">
         <Container>
-          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <ul data-reveal-stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => (
               <li key={s.slug}>
                 <Link
                   href={`/services/${s.slug}`}
-                  className="group flex h-full flex-col gap-3 rounded-xl border bg-card p-6 transition-colors hover:border-primary/40 hover:bg-accent/40 focus-visible:ring-3 focus-visible:ring-ring/50"
+                  data-spotlight
+                  className="group flex h-full flex-col gap-3 rounded-xl border bg-card p-6 focus-visible:ring-3 focus-visible:ring-ring/50"
                 >
                   <s.icon className="size-7 text-primary" aria-hidden="true" />
                   <h2 className="font-heading text-lg font-semibold">{s.title}</h2>
@@ -51,7 +52,11 @@ export default function ServicesPage() {
             eyebrow="Featured project"
             title="Automated Vehicle Registration Platform"
           />
-          <div className="grid items-center gap-8 overflow-hidden rounded-xl border bg-card md:grid-cols-[280px_1fr]">
+          <div
+            data-reveal
+            data-spotlight
+            className="grid items-center gap-8 overflow-hidden rounded-xl border bg-card md:grid-cols-[280px_1fr]"
+          >
             <Image
               src="/images/kadvreg.jpg"
               alt="The KADVREG platform on a phone"

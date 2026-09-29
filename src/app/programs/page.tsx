@@ -60,7 +60,7 @@ export default async function ProgramsPage() {
             </a>
           </div>
           {catalog.status === 'ok' && catalog.courses.length > 0 ? (
-            <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <ul data-reveal-stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {catalog.courses.map((c, i) => (
                 <li key={c.slug}>
                   <CourseCard course={c} preload={i < 3} />
@@ -93,9 +93,13 @@ export default async function ProgramsPage() {
       <section aria-labelledby="how" className="bg-surface-panel py-16">
         <Container className="space-y-8">
           <SectionHeading id="how" title="How it works" />
-          <ol className="grid gap-6 md:grid-cols-3">
+          <ol data-reveal-stagger className="grid gap-6 md:grid-cols-3">
             {steps.map((s, i) => (
-              <li key={s.title} className="space-y-3 rounded-xl border bg-card p-6">
+              <li
+                key={s.title}
+                data-spotlight
+                className="h-full space-y-3 rounded-xl border bg-card p-6"
+              >
                 <span className="flex items-center gap-3">
                   <span className="flex size-10 items-center justify-center rounded-lg bg-accent text-accent-foreground">
                     <s.icon className="size-5" aria-hidden="true" />

@@ -33,7 +33,7 @@ export default function ContactPage() {
       <Container className="grid gap-12 py-16 lg:grid-cols-[1fr_1.4fr]">
         <ul className="space-y-4">
           {items.map((it) => (
-            <li key={it.label} className="flex gap-4 rounded-xl border bg-card p-5">
+            <li key={it.label} data-spotlight className="flex gap-4 rounded-xl border bg-card p-5">
               <span className="flex size-11 shrink-0 items-center justify-center rounded-lg bg-accent text-accent-foreground">
                 <it.icon className="size-5" aria-hidden="true" />
               </span>

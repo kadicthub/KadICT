@@ -23,7 +23,7 @@ export default function ChallengePage() {
       />
       <section aria-label="Photo gallery" className="py-16">
         <Container>
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <ul data-reveal-stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {photos.map((src, i) => (
               <li key={src}>
                 <a
