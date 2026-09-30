@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Montserrat, Open_Sans } from 'next/font/google';
 import { SiteFooter } from '@/components/brand/SiteFooter';
 import { HubAssistant } from '@/components/site/HubAssistant';
 import { HubHeader } from '@/components/site/HubHeader';
@@ -8,18 +7,6 @@ import { brand, SITE_URLS } from '@/lib/brand';
 import { hubIntro } from '@/content/hub';
 import '@/styles/globals.css';
 import '@/styles/hub.css';
-
-// The KAD ICT Hub typefaces, shared with learn.kadhub.ng.
-const body = Open_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-body',
-});
-const heading = Montserrat({
-  subsets: ['latin'],
-  weight: ['500', '600', '700', '800'],
-  variable: '--font-heading',
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URLS.hub),
@@ -33,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${body.variable} ${heading.variable}`}>
+    <html lang="en" suppressHydrationWarning>
       <body className="flex min-h-dvh flex-col bg-background font-sans text-foreground antialiased">
         <Providers>
           <a
