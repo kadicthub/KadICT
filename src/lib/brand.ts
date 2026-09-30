@@ -93,3 +93,45 @@ export const socials: { network: SocialNetwork; label: string; href: string }[] 
     href: 'https://www.instagram.com/thekadhub',
   },
 ];
+
+/** The KAD assistant's words, the same on both sites. */
+export const assistantCopy = {
+  name: 'Kad',
+  open: 'Ask Kad',
+  openLabel: 'Open the KAD assistant',
+  title: 'Kad · AI assistant',
+  subtitle: 'KAD ICT Hub and KAD Learn',
+  close: 'Close the assistant',
+  closeShort: 'Close',
+  newChat: 'New conversation',
+  stop: 'Stop',
+  send: 'Send',
+  inputLabel: 'Your question',
+  suggestionsLabel: 'Suggested questions',
+  placeholder: {
+    public: 'Ask about courses, prices or the hub…',
+    app: 'Ask about a lesson or KAD Learn…',
+  },
+  thinking: 'Kad is thinking',
+  disclaimer: 'Kad is an AI and can make mistakes. Check important details with the hub.',
+  error: 'Kad could not answer just now. Please try again.',
+  offline: 'Kad could not be reached. Check your connection and try again.',
+  greeting: {
+    public:
+      'Hello! I am Kad. Ask me about KAD ICT Hub’s courses, cohorts and prices, our services, or how to register.',
+    app: 'Hello! I am Kad. Ask me to explain a lesson, find something in your courses, or help you get around KAD Learn.',
+  },
+  suggestions: {
+    public: [
+      'Which course should I take to start a tech career?',
+      'When does the next Data Analytics class start?',
+      'Where is the hub and how do I register?',
+    ],
+    app: [
+      'Explain this lesson in simpler words',
+      'Quiz me on what I have learned',
+      'How do I enrol in another course?',
+    ],
+  },
+  you: 'You',
+} as const;

@@ -52,6 +52,17 @@ ones in the kad-lms repository — change both together:
 `siteHref(site, path, current)` keeps same-site links relative and makes links
 to the other site absolute, so the shared header and footer work on both.
 
+### The KAD assistant
+
+The **Ask Kad** button on every page opens the shared assistant
+(`src/components/brand/Assistant.tsx`, identical in kad-lms). It is served by
+KAD Learn at `POST https://learn.kadhub.ng/api/public/assistant`, which knows
+the live course catalogue and reads what this site says about the hub from
+**`/hub-facts.json`**. That feed is generated at build time from
+`src/content/*` and `src/lib/brand.ts`, the same files the pages render, so a
+content change here reaches the assistant on the next deploy (it caches the
+feed for an hour). Keep it to what the pages already say publicly.
+
 ## Courses
 
 `/programs` and the home page call `GET {LEARN_URL}/api/public/catalog`
