@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Montserrat, Open_Sans } from 'next/font/google';
 import { SiteFooter } from '@/components/brand/SiteFooter';
+import { HubAssistant } from '@/components/site/HubAssistant';
 import { HubHeader } from '@/components/site/HubHeader';
 import { Providers } from '@/components/site/Providers';
 import { brand, SITE_URLS } from '@/lib/brand';
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
             {children}
           </main>
           <SiteFooter current="hub" />
+          <HubAssistant />
         </Providers>
       </body>
     </html>
