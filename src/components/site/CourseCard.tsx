@@ -49,7 +49,9 @@ export function CourseCard({ course, preload = false }: { course: LmsCourse; pre
         <p className="line-clamp-2 text-sm text-muted-foreground">{course.summary}</p>
         <div className="mt-auto flex items-center justify-between gap-2 pt-3 text-sm">
           <span className="text-muted-foreground">By {course.teacher}</span>
-          <span className="text-right font-medium">{course.price.label}</span>
+          {course.price.kind !== 'closed' && (
+            <span className="text-right font-medium">{course.price.label}</span>
+          )}
         </div>
       </div>
     </article>
