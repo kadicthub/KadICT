@@ -7,12 +7,12 @@ import { PageHero } from '@/components/site/PageHero';
 import { SectionHeading } from '@/components/site/SectionHeading';
 import { buttonVariants } from '@/components/ui/button';
 import { contact } from '@/lib/brand';
-import { getLmsCatalog } from '@/lib/lms';
+import { getLmsCatalog, type LmsCourse } from '@/lib/lms';
 
 export const metadata: Metadata = {
   title: 'Training programs',
   description:
-    'Data analytics, cyber security, AI, UI/UX, web, software and mobile development, networking, digital literacy and graphic design at KAD ICT Hub, Kaduna.',
+    'Data analytics, cyber security, AI, UI/UX, web, software and mobile development, networking, digital literacy graphic design and digital marketing at KAD ICT Hub, Kaduna.',
   alternates: { canonical: '/programs' },
 };
 
@@ -38,14 +38,32 @@ const steps = [
   },
 ];
 
+const digitalMarketingCourse: LmsCourse = {
+  slug: 'digital-marketing',
+  title: 'Digital Marketing',
+  summary: 'Duration: 2 months.',
+  url: '/register',
+  coverUrl: '/images/computer-lab.jpg',
+  category: { name: 'Marketing', slug: 'marketing' },
+  teacher: 'KAD ICT Hub',
+  price: { kind: 'from', label: '₦150,000', kobo: 15000000 },
+  nextCohort: null,
+};
+
 export default async function ProgramsPage() {
   const catalog = await getLmsCatalog();
+  const courses = [
+    digitalMarketingCourse,
+    ...(catalog.status === 'ok'
+      ? catalog.courses.filter((course) => course.slug !== digitalMarketingCourse.slug)
+      : []),
+  ];
   return (
     <>
       <PageHero
         eyebrow="Training programs"
         title="Learn the skills Kaduna is building its future on"
-        lead="Our programs run in morning and afternoon classes at the hub, with flexible payment options. Every course is on KAD Learn, our learning platform."
+        lead="Our programs run in morning and afternoon classes at the hub, with flexible payment options. Browse courses on KAD Learn or register your interest in Digital Marketing."
         image="/images/computer-lab.jpg"
       />
       <section aria-labelledby="courses" className="py-16">
@@ -59,9 +77,9 @@ export default async function ProgramsPage() {
               Search the full catalogue on KAD Learn
             </a>
           </div>
-          {catalog.status === 'ok' && catalog.courses.length > 0 ? (
+          {courses.length > 0 ? (
             <ul data-reveal-stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {catalog.courses.map((c, i) => (
+              {courses.map((c, i) => (
                 <li key={c.slug}>
                   <CourseCard course={c} preload={i < 3} />
                 </li>
